@@ -16,18 +16,18 @@ public class NotificationTest {
 
     @Test
     public void notificationAnnotationTest() throws Exception {
-        NotificationType type = notificationFactory.getNotificationType(NotificationType.EMAIL)
-                .notifyUser();
+        String type = notificationFactory.getNotificationType(NotificationType.EMAIL)
+                .doSomethingWithNotification();
 
-        Assert.assertTrue(type.equals(NotificationType.EMAIL));
+        Assert.assertTrue(type.contains("EMAIL"));
     }
 
     @Test
     @Disabled
     public void notificationAnnotationByStrategyTest() {
-        NotificationType type = notificationFactory.getNotType(NotificationType.SMS)
-                .notifyUser();
+        String type = notificationFactory.getNotificationTypeInstance(NotificationType.SMS)
+                .doSomethingWithNotification();
 
-        Assert.assertTrue(type.equals(NotificationType.SMS));
+        Assert.assertTrue(type.contains("SMS"));
     }
 }

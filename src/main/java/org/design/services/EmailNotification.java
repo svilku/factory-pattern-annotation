@@ -13,7 +13,11 @@ public class EmailNotification implements Notification {
 
     @Override
     public NotificationType notifyUser() {
-        System.out.println("user: Email");
         return NotificationType.EMAIL;
+    }
+
+    @Override
+    public String doSomethingWithNotification() {
+        return "user: EMAIL";
     }
 }

@@ -32,15 +32,15 @@ public class NotificationFactory {
 
     //@PostConstruct
     public void prepareStrategy() {
-        Instance<Notification> instance = CDI.current().select(Notification.class);
-        instance.forEach(inst ->
-                Optional.ofNullable(map.putIfAbsent(inst.notifyUser(), inst))
+        Instance<Notification> notificationInstance = CDI.current().select(Notification.class);
+        notificationInstance.forEach(notification ->
+                Optional.ofNullable(map.putIfAbsent(notification.notifyUser(), notification))
                         .ifPresent(ins -> {
                             throw new RuntimeException("Already defined");
                         }));
     }
 
-    public Notification getNotType(NotificationType type) {
+    public Notification getNotificationTypeInstance(NotificationType type) {
         return map.get(type);
 
     }

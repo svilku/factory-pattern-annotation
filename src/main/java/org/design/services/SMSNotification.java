@@ -12,8 +12,12 @@ import org.design.enums.NotificationType;
 public class SMSNotification implements Notification {
     @Override
     public NotificationType notifyUser() {
-        System.out.println("user: SMS");
         return NotificationType.SMS;
 
+    }
+
+    @Override
+    public String doSomethingWithNotification() {
+        return "user: SMS";
     }
 }
